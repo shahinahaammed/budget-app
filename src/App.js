@@ -1,6 +1,7 @@
 import { Button, Container, Stack } from "react-bootstrap";
 import "./App.css";
 import BudgetCard from "./components/BudgetCard";
+import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard";
 import AddBudgetModal from "./components/AddBudgetModal";
 import { useState } from "react";
 import { useBudgets } from "./contexts/BudgetsContext";
@@ -54,10 +55,13 @@ function App() {
                 gray
                 amount={amount}
                 max={budget.max}
-                onAddExpenseClick={()=>{openAddExpenseModal(budget.id)}}
+                onAddExpenseClick={() => {
+                  openAddExpenseModal(budget.id);
+                }}
               />
             );
           })}
+          <UncategorizedBudgetCard />
         </div>
       </Container>
       <AddBudgetModal
