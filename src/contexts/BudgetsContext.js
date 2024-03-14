@@ -45,6 +45,12 @@ function getBudgetExpenses(budgetId) {
         })
     }
     function deleteBudget({id}){
+        setExpenses(prevExpenses =>{
+            return prevExpenses.map(expenses=>{
+                if(expenses.budgetId !== id) return expenses
+                return {...expenses, budgetId: UNCATEGORIZED_BUDGET_ID}
+            })
+        })
         setBudgets(prevBudgets =>{
             return prevBudgets.filter(budget => budget.id !==id)
         })
